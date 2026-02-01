@@ -86,7 +86,7 @@ def process_page(url, html):
 def crawler_loop():
     """Run indefinitely until terminated."""
     while True:
-        url = r.rpop("to_crawl")
+        url = r.lpop("to_crawl")
         if not url:
             print("No URLs left, waiting...")
             time.sleep(5)
@@ -118,6 +118,7 @@ if __name__ == "__main__":
             "https://www.quora.com/What-is-artificial-intelligence-15",
         ]
         for seed in seeds:
-            r.lpush("to_crawl", seed)
+            r.rpush("to_crawl", seed)
 
     crawler_loop()
+
