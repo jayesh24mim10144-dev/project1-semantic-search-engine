@@ -33,3 +33,4 @@ if __name__ == "__main__":
     print(f'Top 5 results for your query "{query}" are given below:')
     for url, score in ranked:
         print(f"{url} (score: {score:.4f})")
+   
